@@ -15,7 +15,10 @@ class User(CRideModel, AbstractUser):
     Extend from Django's Abstract User, change the username field
     to email and add some extra fields.
     """
-
+    edad = models.SmallIntegerField(
+        'edad',
+        default=0
+    )
     email = models.EmailField(
         'email address',
         unique=True,
@@ -31,7 +34,7 @@ class User(CRideModel, AbstractUser):
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name' ]
 
     is_client = models.BooleanField(
         'client',
